@@ -1,0 +1,42 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'idea'
+}
+
+idea {
+    project {
+        languageLevel = 11
+    }
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+allprojects {
+    group 'org.toxiggames.memology'
+    version '1.0'
+    sourceCompatibility = 11
+
+    repositories {
+        mavenCentral()
+    }
+
+    apply plugin: 'io.spring.dependency-management'
+    dependencyManagement {
+        dependencies {
+            imports {
+                mavenBom('org.springframework.boot:spring-boot-dependencies:2.6.1')
+            }
+//            dependency('org.modelmapper:modelmapper:2.4.3')
+            dependency('org.projectlombok:lombok:1.18.20')
+            dependency('org.projectlombok:lombok:1.18.20')
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
