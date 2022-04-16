@@ -16,7 +16,7 @@ idea {
 }
 
 allprojects {
-    group 'org.toxiggames.memology'
+    group 'org.toxicgames.memology'
     version '1.0'
     sourceCompatibility = 11
 

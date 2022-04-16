@@ -1,2 +1,4 @@
 rootProject.name = 'memology-server'
+include 'dao'
+include 'database-dev'
 
