@@ -20,4 +20,8 @@ public interface JpaUserRepository extends UserRepository, JpaRepository<User, U
             "where td.id = ?1")
     Optional<User> findByTelegramId(long telegramId);
 
+    @Override
+    @Query("select count(u) from User u left join u.telegramData td where td.id = ?1")
+    boolean existsByTelegramId(long telegramId);
+
 }

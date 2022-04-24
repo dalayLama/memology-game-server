@@ -9,4 +9,6 @@ public interface UserRepository extends Repository<User, UUID> {
 
     Optional<User> findByTelegramId(long telegramId);
 
+    boolean existsByTelegramId(long telegramId);
+
 }

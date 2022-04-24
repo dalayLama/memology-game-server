@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface ReadOnlyRepository<T, ID> {
 
-    boolean exists(ID id);
+    boolean existsById(ID id);
 
     List<T> findAll();
 
