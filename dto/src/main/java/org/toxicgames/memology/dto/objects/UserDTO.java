@@ -1,4 +1,4 @@
-package org.toxicgames.memology.dto;
+package org.toxicgames.memology.dto.objects;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

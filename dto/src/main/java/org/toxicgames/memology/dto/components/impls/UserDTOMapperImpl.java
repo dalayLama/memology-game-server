@@ -2,7 +2,7 @@ package org.toxicgames.memology.dto.components.impls;
 
 import org.springframework.stereotype.Component;
 import org.toxicgames.memology.dao.entities.User;
-import org.toxicgames.memology.dto.UserDTO;
+import org.toxicgames.memology.dto.objects.UserDTO;
 import org.toxicgames.memology.dto.components.UserDTOMapper;
 
 @Component
