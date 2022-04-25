@@ -7,9 +7,10 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.20/18bcea7d5df4d49227b4a0743a536208ce4825bb/lombok-1.18.20.jar" />
         </processorPath>
+        <module name="memology-server.common.main" />
         <module name="memology-server.dao.main" />
+        <module name="memology-server.bootstrap-dev.main" />
         <module name="memology-server.dto.main" />
-        <module name="memology-server.services.main" />
         <module name="memology-server.database-dev.main" />
       </profile>
     </annotationProcessing>
