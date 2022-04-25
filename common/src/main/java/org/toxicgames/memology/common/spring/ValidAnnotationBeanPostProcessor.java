@@ -5,7 +5,6 @@ import lombok.Getter;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.toxicgames.memology.common.annotations.Valid;
 import org.toxicgames.memology.common.components.validation.AppValidator;
@@ -20,7 +19,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Component
+// todo doesn't allow to inject these beans because they are proxy - WTF???
 public class ValidAnnotationBeanPostProcessor implements BeanPostProcessor {
 
     private final ApplicationContext context;
