@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.springframework:spring-context'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation project(':dao')
+    implementation project(':common')
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.assertj:assertj-core'
+    testImplementation 'org.hamcrest:hamcrest'
+}
+
+test {
+    useJUnitPlatform()
+}

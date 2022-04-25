@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/database-dev/src/main/resources/db/changelog/changes/00001_creation_users_table.sql" dialect="H2" />
+    <file url="file://$PROJECT_DIR$/database-dev/src/main/resources/db/changelog/changes/00002_creation_telegram_users_table.sql" dialect="H2" />
+  </component>
+</project>
