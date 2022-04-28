@@ -5,6 +5,7 @@ import lombok.Getter;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.toxicgames.memology.common.annotations.Valid;
 import org.toxicgames.memology.common.components.validation.AppValidator;
@@ -19,7 +20,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-// todo doesn't allow to inject these beans because they are proxy - WTF???
+@Component
 public class ValidAnnotationBeanPostProcessor implements BeanPostProcessor {
 
     private final ApplicationContext context;
@@ -27,6 +28,8 @@ public class ValidAnnotationBeanPostProcessor implements BeanPostProcessor {
     private AppValidator validator;
 
     private final Map<String, List<ValidContext>> beans = new HashMap<>();
+
+    private final Map<String, Class<?>> beanClasses = new HashMap<>();
 
     public ValidAnnotationBeanPostProcessor(ApplicationContext context) {
         this.context = context;
@@ -38,6 +41,7 @@ public class ValidAnnotationBeanPostProcessor implements BeanPostProcessor {
             Parameter[] parameters = m.getParameters();
             for (int i = 0; i < parameters.length; i++) {
                 if (parameters[i].isAnnotationPresent(Valid.class)) {
+                    beanClasses.put(beanName, bean.getClass());
                     addValidContext(beanName, m, i, parameters[i]);
                 }
             }
@@ -50,7 +54,8 @@ public class ValidAnnotationBeanPostProcessor implements BeanPostProcessor {
         if (!beans.containsKey(beanName)) {
             return bean;
         }
-        return Proxy.newProxyInstance(bean.getClass().getClassLoader(), bean.getClass().getInterfaces(), (proxy, method, args) -> {
+        Class<?> beanClass = beanClasses.get(beanName);
+        return Proxy.newProxyInstance(beanClass.getClassLoader(), beanClass.getInterfaces(), (proxy, method, args) -> {
             List<ValidContext> validContexts = beans.get(beanName);
             validContexts.stream()
                     .filter(c -> isSameMethod(c.getMethod(), method))
