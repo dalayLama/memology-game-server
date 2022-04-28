@@ -4,4 +4,5 @@ include 'database-dev'
 include 'dto'
 include 'common'
 include 'bootstrap-dev'
+include 'shared-interfaces'
 
